@@ -212,10 +212,24 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-    - name: 删除过时工作流程
+    - name: 删除旧的工作流 (Delete old Workflow Runs)
+      continue-on-error: true
+      if: env.DELETE_OLD_WORKFLOW == 'true' && !cancelled()
       uses: Mattraks/delete-workflow-runs@v2
       with:
-        token: ${{ secrets.GITHUB_TOKEN }}
-        repository: ${{ github.repository }}
-        retain_days: 1
-        keep_minimum_runs: 3
+          token: ${{ secrets.GITHUB_TOKEN }}
+          repository: ${{ github.repository }}
+          retain_days: 3
+          keep_minimum_runs: 3
+          body: |
+
+            ### OpenWrt Image information
+            - Default IP: 192.168.5.1
+            - Default username: root
+            - Default password: password
+            - Default WIFI name: HiWiFi
+            - Default WIFI password: he1235678
+            ### Install to EMMC
+            - Login to OpenWrt → System → Amlogic Service → Install OpenWrt
+            ### OpenWrt Image Verification
+            - sha256sum
