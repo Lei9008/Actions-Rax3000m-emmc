@@ -4,7 +4,7 @@
 使用 GitHub Actions 在线编译定制 CMCC RAX3000M eMMC version 的 immortalwrt-mt798x 固件
 
 ## 固件特性
-使用 [hanwckf](https://github.com/hanwckf) 大佬的 [immortalwrt-mt798x](https://github.com/hanwckf/immortalwrt-mt798x) 项目仓库，'openwrt-21.02' 分支源码编译，无线使用 mtwifi 原厂无线驱动，内核版本 5.4.x
+使用 [H大](https://github.com/hanwckf) 的 [immortalwrt-mt798x](https://github.com/hanwckf/immortalwrt-mt798x) 项目仓库，'openwrt-21.02' 分支源码编译，无线使用 mtwifi 原厂无线驱动，内核版本 5.4.x
 
 项目详情：[immortalwrt-mt798x项目介绍](https://cmi.hanwckf.top/p/immortalwrt-mt798x)
 
@@ -21,7 +21,7 @@
 在 Actions 选择该工作流手动点击 Run workflow 执行编译，等待固件编译完成上传至 releases 发布即可下载
 
 ### 配置说明
-- 默认 LAN IP 已更改为 `192.168.6.1`，可在 `scripts/diy.sh` 处修改
+- 默认 LAN IP 已更改为 `192.168.5.1`，可在 `scripts/diy.sh` 处修改
 
 - 需要取消集成或添加其他软件包可在 `configs/rax3000m-emmc_mtksdk.config` 处参考注释内容自行修改或添加配置选项
 
