@@ -128,13 +128,20 @@ jobs:
         find dl -size -1024c -exec ls -l {} \;
         find dl -size -1024c -exec rm -f {} \;
 
-    - name: 编译固件中
-      id: compile
+    #- name: 编译固件中
+      #id: compile
+      #run: |
+        #cd openwrt
+        #echo -e "$(($(nproc)+1)) thread compile"
+        #make -j$(($(nproc)+1)) || make -j$(nproc) || make -j1 V=s
+        #echo "status=success" >> $GITHUB_OUTPUT
+
+    - name: 构建OpenWrt (Build OpenWrt)
       run: |
         cd openwrt
-        echo -e "$(($(nproc)+1)) thread compile"
-        make -j$(($(nproc)+1)) || make -j$(nproc) || make -j1 V=s
-        echo "status=success" >> $GITHUB_OUTPUT
+        make -j1 || make -j1 V=s
+        [ "$?" == 0 ] && echo "Compile_Result=true" >> $GITHUB_ENV || echo "Compile_Result=false" >> $GITHUB_ENV
+
 
     - name: 空间使用情况
       if: (!cancelled())
