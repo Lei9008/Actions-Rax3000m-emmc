@@ -16,4 +16,6 @@ sed -i '$a src-git kwrt_packages https://dl.openwrt.ai/releases/24.10/packages/a
 sed -i '$a src-git kwrt_luci https://dl.openwrt.ai/releases/24.10/packages/aarch64_cortex-a53/luci' feeds.conf.default
 sed -i '$a src-git kwrt_routing https://dl.openwrt.ai/releases/24.10/packages/aarch64_cortex-a53/routing' feeds.conf.default
 sed -i '$a src-git kwrt_kiddin9 https://dl.openwrt.ai/releases/24.10/packages/aarch64_cortex-a53/kiddin9' feeds.conf.default
-
+ git pull
+     ./scripts/feeds update -a
+     ./scripts/feeds install -a
