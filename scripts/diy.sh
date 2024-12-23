@@ -8,3 +8,12 @@ sed -i 's/root:::0:99999:7:::/root:$1$V4UetPzk$CYXluq4wUazHjmCDBCqXF.::0:99999:7
 
 #修改主机名
 sed -i "s/hostname='OpenWrt'/hostname='RAX3000Z'/g" package/base-files/files/bin/config_generate
+
+# Add a feed source
+sed -i '$a src-git kwrt_core https://dl.openwrt.ai/releases/24.10/targets/mediatek/filogic/6.6.66' feeds.conf.default
+sed -i '$a src-git kwrt_base https://dl.openwrt.ai/releases/24.10/packages/aarch64_cortex-a53/base' feeds.conf.default
+sed -i '$a src-git kwrt_packages https://dl.openwrt.ai/releases/24.10/packages/aarch64_cortex-a53/packages' feeds.conf.default
+sed -i '$a src-git kwrt_luci https://dl.openwrt.ai/releases/24.10/packages/aarch64_cortex-a53/luci' feeds.conf.default
+sed -i '$a src-git kwrt_routing https://dl.openwrt.ai/releases/24.10/packages/aarch64_cortex-a53/routing' feeds.conf.default
+sed -i '$a src-git kwrt_kiddin9 https://dl.openwrt.ai/releases/24.10/packages/aarch64_cortex-a53/kiddin9' feeds.conf.default
+
