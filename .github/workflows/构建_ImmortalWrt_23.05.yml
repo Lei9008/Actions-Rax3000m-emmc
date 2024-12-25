@@ -8,7 +8,7 @@
 # Description: Build OpenWrt using GitHub Actions
 #
 
-name: 构建CMCC_RAX_3000Z增强版_ImmortalWrt
+name: 构建_ImmortalWrt_23.05_CMCC_RAX_3000Z增强版
 
 permissions: write-all
 # 开启写权限，防止无法上传到release
