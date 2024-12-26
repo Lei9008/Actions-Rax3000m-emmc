@@ -194,7 +194,6 @@ jobs:
         echo "- 使用源码：${{ env.REPO_URL }}" >> release.txt
         echo "- 使用分支：openwrt-21.02" >> release.txt
         echo "- 登录地址：${{ env.IP_ADDR }}" >> release.txt
-        echo -e "### immortalwrt-mt7981-cmcc_rax3000m-emmc" >> release.txt
         wlan_luci_interface=""
         if grep -q 'CONFIG_PACKAGE_mtwifi-cfg=y' openwrt/.config; then
           echo "- 使用 OpenWrt 原生无线控制界面" >> release.txt
