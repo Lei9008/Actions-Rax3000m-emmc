@@ -21,7 +21,7 @@ sed -i 's/root:::0:99999:7:::/root:$1$V4UetPzk$CYXluq4wUazHjmCDBCqXF.::0:99999:7
 
 
 ##-----------------Del duplicate packages------------------
-rm -rf feeds/packages/net/open-app-filter
+#rm -rf feeds/packages/net/open-app-filter
 ##-----------------Add OpenClash dev core------------------
 #curl -sL -m 30 --retry 2 https://raw.githubusercontent.com/vernesong/OpenClash/core/master/dev/clash-linux-arm64.tar.gz -o /tmp/clash.tar.gz
 #tar zxvf /tmp/clash.tar.gz -C /tmp >/dev/null 2>&1
