@@ -37,6 +37,7 @@ env:
   FREE_DISK_SH: scripts/free_disk_space.sh
   #FEEDS_CONF: scripts/feeds.conf.default
   ENV_SH: scripts/environment.sh
+  DIY_SH: scripts/diy.sh
   DIY_P1_SH: scripts/diy-part1.sh
   DIY_P2_SH: scripts/diy-part2.sh
   CLASH_CORE: scripts/preset-clash-core.sh
