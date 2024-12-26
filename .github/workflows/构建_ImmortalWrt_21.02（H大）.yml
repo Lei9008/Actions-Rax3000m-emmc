@@ -199,7 +199,7 @@ jobs:
       run: |
         touch release.txt
         echo "- 使用源码：${{ env.REPO_URL }}" >> release.txt
-        echo "- 使用分支：${{ env.REPO_BRANCH }}" >> release.txt
+        echo "- 使用分支：openwrt-21.02" >> release.txt
         echo "- 登录地址：${{ env.IP_ADDR }}" >> release.txt
         echo -e "### immortalwrt-mt7981-cmcc_rax3000m-emmc" >> release.txt
         wlan_luci_interface=""
