@@ -197,6 +197,10 @@ jobs:
       id: tag
       if: env.UPLOAD_RELEASE == 'true' && steps.compile.outputs.status == 'success' && !cancelled()
       run: |
+        touch release.txt
+        echo "- 使用源码：${{ env.REPO_URL }}" >> release.txt
+        echo "- 使用分支：${{ env.REPO_BRANCH }}" >> release.txt
+        echo "- 登录地址：${{ env.IP_ADDR }}" >> release.txt
         echo -e "### immortalwrt-mt7981-cmcc_rax3000m-emmc" >> release.txt
         wlan_luci_interface=""
         if grep -q 'CONFIG_PACKAGE_mtwifi-cfg=y' openwrt/.config; then
@@ -220,7 +224,7 @@ jobs:
         echo "release_tag=${release_tag}" >> $GITHUB_OUTPUT
         echo "status=success" >> $GITHUB_OUTPUT
 
-    - name: 上传固件发布
+    - name: 发布固件至Release
       uses: softprops/action-gh-release@v1
       if: steps.tag.outputs.status == 'success' && !cancelled()
       env:
@@ -230,33 +234,4 @@ jobs:
         body_path: release.txt
         files: ${{ env.FIRMWARE }}/*
 
-    - name: 删除旧发布的固件
-      uses: dev-drprasad/delete-older-releases@v0.2.1
-      if: steps.compile.outputs.status == 'success' && env.UPLOAD_RELEASE == 'true' && !cancelled()
-      with:
-        keep_latest: 7
-        delete_tags: true
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-    - name: 删除旧的工作流 (Delete old Workflow Runs)
-      continue-on-error: true
-      if: env.DELETE_OLD_WORKFLOW == 'true' && !cancelled()
-      uses: Mattraks/delete-workflow-runs@v2
-      with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          repository: ${{ github.repository }}
-          retain_days: 3
-          keep_minimum_runs: 3
-          body: |
-
-            ### OpenWrt Image information
-            - Default IP: 192.168.5.1
-            - Default username: root
-            - Default password: password
-            - Default WIFI name: HiWiFi
-            - Default WIFI password: he1235678
-            ### Install to EMMC
-            - Login to OpenWrt → System → Amlogic Service → Install OpenWrt
-            ### OpenWrt Image Verification
-            - sha256sum
+  
