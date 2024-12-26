@@ -39,6 +39,7 @@ on:
 env:
   REPO_URL: https://github.com/destan19/immortalwrt-mt798x-fros
   FREE_DISK_SH: scripts/free_disk_space.sh
+  FEEDS_CONF: scripts/feeds.conf.default
   ENV_SH: scripts/environment.sh
   DIY_P1_SH: scripts/diy-part1.sh
   DIY_P2_SH: scripts/diy-part2.sh
