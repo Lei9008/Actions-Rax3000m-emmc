@@ -96,20 +96,6 @@ jobs:
         [ -e files ] && mv files openwrt/files
         cat configs/rax3000m-emmc.config >> openwrt/.config
 
-    - name: 设置LAN IP地址（路由器登录地址）
-      run: |
-        cd openwrt
-        SET_IP=${{ github.event.inputs.LAN_IP }}
-        if [[ $SET_IP =~ ^(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$ ]]; then
-            #修改immortalwrt.lan关联IP
-            sed -i "s/192\.168\.[0-9]*\.[0-9]*/$SET_IP/g" $(find feeds/luci/modules/luci-mod-system -type f -name "flash.js")
-            #修改默认IP地址
-            sed -i "s/192\.168\.[0-9]*\.[0-9]*/$SET_IP/g" package/base-files/files/bin/config_generate
-            echo "Set LAN IP Address: $SET_IP"
-        else
-            echo "Invalid IP address, use default."
-        fi
-
     - name: 设置是否使用 nx30pro eeprom
       if: env.USE_NX30PRO_EEPROM == 'true'
       run: |
@@ -177,6 +163,9 @@ jobs:
       if: env.UPLOAD_RELEASE == 'true' && steps.compile.outputs.status == 'success' && !cancelled()
       run: |
         echo -e "### immortalwrt-23.05-SNAPSHOT-rax3000m-emmc-ubootmod" >> release.txt
+        echo "- 使用源码：${{ env.REPO_URL }}" >> release.txt
+        echo "- 使用分支：${{ env.REPO_BRANCH }}" >> release.txt
+        echo "- 登录地址：192.168.5.1" >> release.txt
         eeprom_status=""
         if [ -e openwrt/target/linux/mediatek/filogic/base-files/lib/firmware/mediatek/nx30pro_eeprom.bin ] ; then
           echo "- eeprom 使用 H3C NX30 Pro 提取版本" >> release.txt
