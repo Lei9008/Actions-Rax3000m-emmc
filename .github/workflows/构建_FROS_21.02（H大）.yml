@@ -153,7 +153,7 @@ jobs:
                 echo "BUILD_DOCKERMAN=docker" >> $GITHUB_ENV
         else
                 echo "BUILD_DOCKERMAN=" >> $GITHUB_ENV
-        fi          
+                 
         echo "status=success" >> $GITHUB_OUTPUT
 
     - name: 空间使用情况
