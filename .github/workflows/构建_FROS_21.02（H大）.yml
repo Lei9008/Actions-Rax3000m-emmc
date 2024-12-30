@@ -148,13 +148,6 @@ jobs:
         echo -e "$(($(nproc)+1)) thread compile"
         make -j$(($(nproc)+1)) || make -j$(nproc) || make -j1 V=s
 
-        fi
-        if grep -q 'CONFIG_PACKAGE_luci-app-dockerman=y' .config; then
-                echo "BUILD_DOCKERMAN=docker" >> $GITHUB_ENV
-        else
-                echo "BUILD_DOCKERMAN=" >> $GITHUB_ENV
-        fi
-                 
         echo "status=success" >> $GITHUB_OUTPUT
 
     - name: 空间使用情况
