@@ -33,11 +33,11 @@ sed -i '/"mediatek"\/\*|\"mvebu"\/\*/{n; s/.*/\tcpu_freq="1.3GHz" ;;/}' package/
 
 # Add a feed source
 #echo 'src-git helloworld https://github.com/fw876/helloworld' >>feeds.conf.default
-#echo 'src-git passwall https://github.com/xiaorouji/openwrt-passwall' >>feeds.conf.default
-#git clone https://github.com/messense/aliyundrive-webdav package/messense
+
+echo 'src-git passwall https://github.com/xiaorouji/openwrt-passwall' >>feeds.conf.default
 
 # 阿里云盘WebDav
-https://github.com/messense/aliyundrive-webdav
+git clone https://github.com/messense/aliyundrive-webdav package/messense
 
 # 应用过滤
 git clone https://github.com/destan19/OpenAppFilter package/OpenAppFilter
