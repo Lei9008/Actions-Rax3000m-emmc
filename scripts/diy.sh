@@ -37,7 +37,7 @@ sed -i '/"mediatek"\/\*|\"mvebu"\/\*/{n; s/.*/\tcpu_freq="1.3GHz" ;;/}' package/
 #echo 'src-git passwall https://github.com/xiaorouji/openwrt-passwall' >>feeds.conf.default
 #git clone https://github.com/messense/aliyundrive-webdav package/messense
 
-阿里云盘WebDav
+# 阿里云盘WebDav
 https://github.com/messense/aliyundrive-webdav
 
 # 应用过滤
