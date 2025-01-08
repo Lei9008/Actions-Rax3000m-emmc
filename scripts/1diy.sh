@@ -7,7 +7,7 @@
 #
 # https://github.com/P3TERX/Actions-OpenWrt
 # File name: diy-part1.sh
-# Description: OpenWrt DIY script part 1 (Before Update feeds)
+# Description: OpenWrt DIY  (Before Update feeds)
 #
 
 
@@ -19,7 +19,7 @@
 sed -i 's/root:::0:99999:7:::/root:$1$V4UetPzk$CYXluq4wUazHjmCDBCqXF.::0:99999:7:::/g' package/base-files/files/etc/shadow
 
 #修改主机名
-#sed -i "s/hostname='OpenWrt'/hostname='Rax3000z'/g" package/base-files/files/bin/config_generate
+sed -i "s/hostname='OpenWrt'/hostname='Rax3000z'/g" package/base-files/files/bin/config_generate
 
 
 ##-----------------Del duplicate packages------------------
@@ -43,9 +43,14 @@ sed -i '/"mediatek"\/\*|\"mvebu"\/\*/{n; s/.*/\tcpu_freq="1.3GHz" ;;/}' package/
 #sed -i 's|/bin/login|/bin/login -f root|g' feeds/packages/utils/ttyd/files/ttyd.config
 
 # Add a feed source
+
 #echo 'src-git helloworld https://github.com/fw876/helloworld' >>feeds.conf.default
-#echo 'src-git passwall https://github.com/xiaorouji/openwrt-passwall' >>feeds.conf.default
-#git clone https://github.com/messense/aliyundrive-webdav package/messense
+
+# passwall
+echo 'src-git passwall https://github.com/xiaorouji/openwrt-passwall' >>feeds.conf.default
+
+# 阿里云盘 WebDAV
+git clone https://github.com/messense/aliyundrive-webdav package/messense
 
 # 应用过滤
 git clone https://github.com/destan19/OpenAppFilter package/OpenAppFilter
