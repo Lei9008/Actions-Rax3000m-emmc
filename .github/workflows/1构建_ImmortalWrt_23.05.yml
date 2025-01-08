@@ -177,6 +177,9 @@ jobs:
       if: env.UPLOAD_RELEASE == 'true' && steps.compile.outputs.status == 'success' && !cancelled()
       run: |
         echo -e "### immortalwrt-23.05-SNAPSHOT-RAX_3000Z增强版-ubootmod" >> release.txt
+        echo "- 使用源码：${{ env.REPO_URL }}" >> release.txt
+        echo "- 使用分支：${{ env.REPO_BRANCH }}" >> release.txt
+        echo "- 登录地址：192.168.5.1" >> release.txt
         eeprom_status=""
         if [ -e openwrt/target/linux/mediatek/filogic/base-files/lib/firmware/mediatek/nx30pro_eeprom.bin ] ; then
           echo "- eeprom 使用 H3C NX30 Pro 提取版本" >> release.txt
