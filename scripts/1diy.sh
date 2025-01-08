@@ -37,12 +37,17 @@ sed -i '/myddns_ipv4/,$d' feeds/packages/net/ddns-scripts/files/etc/config/ddns
 sed -i '/"mediatek"\/\*|\"mvebu"\/\*/{n; s/.*/\tcpu_freq="1.3GHz" ;;/}' package/emortal/autocore/files/generic/cpuinfo
 
 
-# Uncomment a feed source
+# Uncomment a feed source 
 #sed -i 's/^#\(.*helloworld\)/\1/' feeds.conf.default
 # ttyd免登陆
 #sed -i 's|/bin/login|/bin/login -f root|g' feeds/packages/utils/ttyd/files/ttyd.config
 
-# Add a feed source
+# Add a feed source 添加额外的软件包源
+
+sed -i '$a src-git lienol https://github.com/Lienol/openwrt-package' feeds.conf.default
+sed -i '$a src-git kenzo https://github.com/kenzok8/openwrt-packages' feeds.conf.default
+sed -i '$a src-git small https://github.com/kenzok8/small' feeds.conf.default
+sed -i '$a src-git smpackage https://github.com/kenzok8/small-package' feeds.conf.default
 
 #echo 'src-git helloworld https://github.com/fw876/helloworld' >>feeds.conf.default
 
